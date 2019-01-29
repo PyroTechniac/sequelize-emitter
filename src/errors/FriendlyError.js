@@ -1,8 +1,7 @@
 /**
- * A friendly error
+ * A base error for all Sequelize-Emitter errors
  * @extends {Error}
  */
-
 class FriendlyError extends Error {
     /** @param {string} message - The error message */
     constructor(message) {

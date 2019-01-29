@@ -67,6 +67,7 @@ class Client extends EventEmitter {
         if (typeof options.port !== 'number' && options.port !== undefined) throw new TypeError('Port must be a number');
         if (typeof options.dialect !== 'string' && options.dialect !== undefined) throw new TypeError('Dialect must be a string');
         if (typeof options.logging !== 'function' || typeof options.logging !== 'boolean' && options.logging !== undefined) throw new TypeError('Logging must be a function or boolean');
+        
     }
 }
 module.exports = Client;
