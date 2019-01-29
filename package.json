@@ -14,5 +14,8 @@
         "lodash": "^4.17.11"
     },
     "description": "An event emitter extension for Sequelize",
-    "license": "MIT"
+    "license": "MIT",
+    "engines": {
+        "node": ">=10.1.0"
+    }
 }
