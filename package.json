@@ -8,5 +8,11 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/PyroTechniac/sequelize-emitter"
-    }
+    },
+    "dependencies": {
+        "sequelize": "^4.42.0",
+        "lodash": "^4.17.11"
+    },
+    "description": "An event emitter extension for Sequelize",
+    "license": "MIT"
 }
