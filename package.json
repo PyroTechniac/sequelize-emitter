@@ -5,6 +5,12 @@
         "name": "BotPyro",
         "email": "owenbellish@gmail.com"
     },
+    "main": "./src/index.js",
+    "scripts": {
+        "test": "node ./test/main.js",
+        "debug": "eslint . --ext .js",
+        "lint": "eslint . --ext .js --fix"
+    },
     "repository": {
         "type": "git",
         "url": "https://github.com/PyroTechniac/sequelize-emitter"

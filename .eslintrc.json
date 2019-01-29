@@ -18,6 +18,8 @@
         }],
         "comma-spacing": "error",
         "comma-style": "error",
+        "consistent-return":"error",
+        "constructor-super": "off",
         "curly": ["error", "multi-line", "consistent"],
         "dot-location": ["error", "property"],
         "handle-callback-err": "off",
