@@ -1,9 +1,9 @@
-const FriendlyError = require('./FriendlyError');
+const GenericError = require('./GenericError');
 /**
  * An error for syncing
- * @extends {FriendlyError}
+ * @extends {GenericError}
  */
-class SyncError extends FriendlyError {
+class SyncError extends GenericError {
     /** @param {string} message - The error message */
     constructor(message) {
         super(message);

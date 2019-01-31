@@ -28,5 +28,18 @@ class Util {
         }
         return out;
     }
+    /**
+     * Searches an array for a specified value, and a boolean if it exists
+     * @param {*} arg - Value to search for
+     * @param {Array} arrayToSearch - Array to search through
+     */
+    static findIn(arg, arrayToSearch) {
+        if (!(arrayToSearch instanceof Array)) return false;
+        let identifier = false;
+        arrayToSearch.forEach(val => {
+            if (val === arg) identifier = true;
+        });
+        return identifier;
+    }
 }
 module.exports = Util;

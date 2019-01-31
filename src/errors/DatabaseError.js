@@ -1,13 +1,13 @@
 const GenericError = require('./GenericError');
 /**
- * An error for when emitting has an error
+ * An error for when the database fails at something
  * @extends {GenericError}
  */
-class EmitError extends GenericError {
+class DatabaseError extends GenericError {
     /** @param {string} message - The error message */
     constructor(message) {
         super(message);
-        this.name = 'EmitError';
+        this.name = 'DatabaseError';
     }
 }
-module.exports = EmitError;
+module.exports = DatabaseError;

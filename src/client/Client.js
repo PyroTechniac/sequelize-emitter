@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const { EventEmitter } = require('events');
-const FriendlyError = require('../errors/FriendlyError');
+const { SyncError, AuthError, OptionsError, DatabaseError } = require('../errors/index');
+const { findIn } = require('../util/Util');
 /**
  * The client for starting the emitter
  * @extends {EventEmitter}
@@ -59,15 +60,16 @@ class Client extends EventEmitter {
      */
     _validateOptions(options) {
         if (!options) throw new ReferenceError('Options must be defined');
-        if (typeof options !== 'object' || options instanceof Array) throw new TypeError('Options must be an object');
-        if (typeof options.name !== 'string' && options.name !== undefined) throw new TypeError('Database name must be a string');
-        if (typeof options.username !== 'string' && (options.username !== undefined && options.username !== null)) throw new TypeError('Username must be a string');
-        if (typeof options.password !== 'string' && (options.password !== undefined && options.password !== null)) throw new TypeError('Password must be a string');
-        if (typeof options.host !== 'string' && options.host !== undefined) throw new TypeError('Host must be a string');
-        if (typeof options.port !== 'number' && options.port !== undefined) throw new TypeError('Port must be a number');
-        if (typeof options.dialect !== 'string' && options.dialect !== undefined) throw new TypeError('Dialect must be a string');
-        if (typeof options.logging !== 'function' || typeof options.logging !== 'boolean' && options.logging !== undefined) throw new TypeError('Logging must be a function or boolean');
-        
+        if (typeof options !== 'object' || options instanceof Array) throw new OptionsError('Options must be an object');
+        if (typeof options.name !== 'string' && options.name !== undefined) throw new OptionsError('Database name must be a string');
+        if (typeof options.username !== 'string' && (options.username !== undefined && options.username !== null)) throw new OptionsError('Username must be a string');
+        if (typeof options.password !== 'string' && (options.password !== undefined && options.password !== null)) throw new OptionsError('Password must be a string');
+        if (typeof options.host !== 'string' && options.host !== undefined) throw new OptionsError('Host must be a string');
+        if (typeof options.port !== 'number' && options.port !== undefined) throw new OptionsError('Port must be a number');
+        if (typeof options.dialect !== 'string' && options.dialect !== undefined) throw new OptionsError('Dialect must be a string');
+        if (typeof options.logging !== 'function' || typeof options.logging !== 'boolean' && options.logging !== undefined) throw new OptionsError('Logging must be a function or boolean');
+        if (!findIn(options.dialect, ['sqlite', 'mssql', 'mysql', 'postgres'])) throw new OptionsError('Dialect must be either sqlite, mssql, mysql, or postgres');
+        if (options.storage === undefined && options.dialect === 'sqlite') throw new OptionsError('Storage must be provided when dialect is sqlite');
     }
 }
 module.exports = Client;

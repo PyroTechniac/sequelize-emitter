@@ -17,7 +17,8 @@
     },
     "dependencies": {
         "sequelize": "^4.42.0",
-        "lodash": "^4.17.11"
+        "lodash": "^4.17.11",
+        "sqlite":"^3.0.1"
     },
     "description": "An event emitter extension for Sequelize",
     "license": "MIT",

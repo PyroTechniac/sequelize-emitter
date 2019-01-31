@@ -1,9 +1,9 @@
-const FriendlyError = require('./FriendlyError');
+const GenericError = require('./GenericError');
 /**
  * An error for when options are invalid
- * @extends {FriendlyError}
+ * @extends {GenericError}
  */
-class OptionsError extends FriendlyError {
+class OptionsError extends GenericError {
     /** @param {string} message - The error message */
     constructor(message) {
         super(message);
